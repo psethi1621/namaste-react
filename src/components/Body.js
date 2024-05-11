@@ -1,28 +1,7 @@
 import { useEffect, useState } from "react";
-import CDN_URL, {LIST_URL} from "../utils/constants";
+import {LIST_URL} from "../utils/constants";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router-dom";
-
-const RestaurantCard = (props) => {
-  const resData = props.resData;
-  const resId = "601724";
-
-  return (
-    <div className="p-4 m-4 w-[200px] min-w-[200px] bg-slate-100 hover:bg-slate-300 rounded-2xl">
-      <Link to={"/restaurant/"+resData.info.id}>
-        <img
-          alt="res logo"
-          className="res-logo"
-          src={CDN_URL + resData.info.cloudinaryImageId}
-        ></img>
-        <h3>{resData.info.name}</h3>
-        <div>{resData.info.cuisines.join(", ")}</div>
-        <div>{resData.info.avgRating} stars</div>
-        <div>{resData.info.sla.deliveryTime} minutes</div>
-      </Link>
-    </div>
-  );
-};
+import RestaurantCard from "./RestaurantCard";
 
 const RestaurantCardContainer = (props) => {
   const cardsData = props.cardsData;
@@ -77,7 +56,7 @@ const Body = () => {
         <div className="flex">
           <div id="search" className="">
             <input 
-              className="border border-solid border-black"
+              className="border border-solid border-black rounded-2xl mx-4"
               type="text"
               value={searchText}
               onChange={(e) => {

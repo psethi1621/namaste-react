@@ -1,6 +1,5 @@
-import React from "react";
+import React, { lazy } from "react";
 import ReactDOM from "react-dom/client";
-
 import "../index.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -10,13 +9,16 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from './components/Error'
 import RestaurantMenu from "./components/RestaurantMenu";
+// import LazyLoading from "./components/LazyLoading";
 /**
- *
- *
- *
+ * Chunking 
+ * Lazy loading
+ * Dynamic bundling
+ * 
  */
 console.log("Applayout rendered");
 
+const LazyLoading = lazy(() => import('./components/LazyLoading'));
 
 
 const AppLayout = () => {
@@ -53,6 +55,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/lazyloading",
+        element: <LazyLoading />,
       }
     ],
     errorElement: <Error />,

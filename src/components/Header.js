@@ -23,6 +23,7 @@ const Header = () => {
           <li className="px-4"><Link to="/">Home</Link></li>
           <li className="px-4"><Link to="/about">About Us</Link></li>
           <li className="px-4"><Link to="/contact">Contact Us</Link></li>
+          <li className="px-4"><Link to="/lazyloading">Lazy Loading</Link></li>
           <li className="px-4">Cart</li>
           <button className="login" onClick={btnChangeHandler}>{btnName}</button>
         </ul>

@@ -14,12 +14,10 @@ import RestaurantMenu from "./components/RestaurantMenu";
  * Chunking 
  * Lazy loading
  * Dynamic bundling
- * 
+ * Code spliting
  */
-console.log("Applayout rendered");
 
 const LazyLoading = lazy(() => import('./components/LazyLoading'));
-
 
 const AppLayout = () => {
 

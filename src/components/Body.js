@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
-import {LIST_URL} from "../utils/constants";
+import { LIST_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 
 const RestaurantCardContainer = (props) => {
+  // console.log(props);
   const cardsData = props.cardsData;
-  const cardContainer = cardsData.map((resObj, i) => (
-    <RestaurantCard resData={resObj} key={i} />
-  ));
+  const PromotedRestaurant = withPromotedLabel(RestaurantCard);
+  const cardContainer = cardsData.map((resObj, i) => {
+    if (resObj.info.aggregatedDiscountInfoV3 !== null ){
+      return <PromotedRestaurant resData={resObj} key={i} />;
+    } else {
+      return <RestaurantCard resData={resObj} key={i} />;
+    }
+  }
+  );
   return <div className="flex flex-wrap">{cardContainer}</div>;
 };
 
@@ -23,9 +30,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      LIST_URL
-    );
+    const data = await fetch(LIST_URL);
     const json = await data.json();
     setListOfRestaurants(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -55,7 +60,7 @@ const Body = () => {
       <div className="body">
         <div className="flex">
           <div id="search" className="">
-            <input 
+            <input
               className="border border-solid border-black rounded-2xl mx-4"
               type="text"
               value={searchText}
@@ -63,7 +68,10 @@ const Body = () => {
                 setSearchText(e.target.value);
               }}
             />
-            <button className="border border-solid bg-green-200 px-4 rounded-2xl mx-4" onClick={searchButtonHandler}>
+            <button
+              className="border border-solid bg-green-200 px-4 rounded-2xl mx-4"
+              onClick={searchButtonHandler}
+            >
               Search
             </button>
           </div>

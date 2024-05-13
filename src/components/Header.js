@@ -13,7 +13,7 @@ const Header = () => {
   }
   console.log("header rendered");
   return (
-    <div className="flex justify-between bg-pink-100 shadow-lg m-2 h-20">
+    <div className="flex justify-between bg-pink-100 shadow-lg m-2 h-20 sm:bg-yellow-100">
       <div className="logo-container">
         <img className="w-20 h-20" src={LOGO_URL}></img>
       </div>

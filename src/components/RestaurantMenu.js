@@ -2,6 +2,7 @@ import React from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -9,27 +10,35 @@ const RestaurantMenu = () => {
 
   const resInfo = useRestaurantMenu(resId);
 
-  return resInfo === null ? (
-    <Shimmer />
-  ) : (
-    <div>
-      <h1>Restaurant Name: {resInfo?.cards[2].card?.card?.info?.name}</h1>
-      <h2>Restaurant Id: {resInfo?.cards[2].card?.card?.info?.id}</h2>
-      <h2>Menu</h2>
-      <ul>
-        {resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards?.map(
-          (item) => {
-            console.log(item);
-            return (
-              <li key={item?.card?.info?.id}>
-                {item?.card?.info?.name +
-                  "- Rs." +
-                  item?.card?.info?.price / 100}
-              </li>
-            );
-          }
-        )}
-      </ul>
+  if (resInfo === null) return <Shimmer />;
+
+  const { name, cuisines, costForTwoMessage } =
+    resInfo?.cards[2]?.card?.card?.info;
+
+  const categories =
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+
+  // console.log("categories", categories);
+  return (
+    <div className="menu m-auto w-6/12 bg-gray-400 rounded-xl p-4">
+      <div className="m-4 p-4 bg-gray-300 rounded-xl">
+        <h1 className="font-bold text-center">{name}</h1>
+        <h2 className="font-bold text-center">Menu</h2>
+        <p className="font-bold text-center">
+          {cuisines.join(", ")} - {costForTwoMessage}
+        </p>
+      </div>
+      {categories.map((category) => (
+        <RestaurantCategory
+        itemCards={category?.card?.card?.itemCards}
+        title={category?.card?.card?.title}
+        key={category?.card?.card?.title}
+        />
+      ))}
     </div>
   );
 };

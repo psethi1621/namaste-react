@@ -8,7 +8,7 @@ const RestaurantCard = (props) => {
     <div className="p-4 m-4 w-[200px] min-w-[200px] bg-slate-100 hover:bg-slate-400 rounded-2xl">
       <Link to={"/restaurant/"+resData.info.id}>
         <img
-          alt="res logo"
+          alt="Restaurant Logo"
           className="res-logo"
           src={CDN_URL + resData.info.cloudinaryImageId}
         ></img>
@@ -24,7 +24,7 @@ const RestaurantCard = (props) => {
 export const withPromotedLabel = (RestaurantCard) => {
 
     return (props) => <>
-        <label className="absolute bg-black text-white">Promoted</label>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Promoted</label>
         <RestaurantCard {...props} />
     </>
 }

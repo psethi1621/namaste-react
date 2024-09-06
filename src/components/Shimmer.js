@@ -5,21 +5,16 @@ const Shimmer = () => {
       };
     
     return <>
-        <div className="shimmer-container">
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
-            <div className="shimmer-card" style={styleCard}></div>
+        <div className="flex flex-wrap">
+            <div className="p-4 m-4 w-[200px] min-w-[200px] min-h-[400px] bg-slate-100 hover:bg-slate-400 rounded-2xl" style={styleCard}></div>
+            <div className="p-4 m-4 w-[200px] min-w-[200px] min-h-[400px] bg-slate-100 hover:bg-slate-400 rounded-2xl" style={styleCard}></div>
+            <div className="p-4 m-4 w-[200px] min-w-[200px] min-h-[400px] bg-slate-100 hover:bg-slate-400 rounded-2xl" style={styleCard}></div>
+            <div className="p-4 m-4 w-[200px] min-w-[200px] min-h-[400px] bg-slate-100 hover:bg-slate-400 rounded-2xl" style={styleCard}></div>
+            <div className="p-4 m-4 w-[200px] min-w-[200px] min-h-[400px] bg-slate-100 hover:bg-slate-400 rounded-2xl" style={styleCard}></div>
+            <div className="p-4 m-4 w-[200px] min-w-[200px] min-h-[400px] bg-slate-100 hover:bg-slate-400 rounded-2xl" style={styleCard}></div>
+            <div className="p-4 m-4 w-[200px] min-w-[200px] min-h-[400px] bg-slate-100 hover:bg-slate-400 rounded-2xl" style={styleCard}></div>
+            <div className="p-4 m-4 w-[200px] min-w-[200px] min-h-[400px] bg-slate-100 hover:bg-slate-400 rounded-2xl" style={styleCard}></div>
+            <div className="p-4 m-4 w-[200px] min-w-[200px] min-h-[400px] bg-slate-100 hover:bg-slate-400 rounded-2xl" style={styleCard}></div>
         </div>
     </>
 }

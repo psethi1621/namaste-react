@@ -1,6 +1,5 @@
 import React from "react";
 import CDN_URL from "../utils/constants";
-
 const ItemCard = ({ item }) => {
 //   console.log(item);
   return (
@@ -15,5 +14,4 @@ const ItemCard = ({ item }) => {
     </div>
   );
 };
-
 export default ItemCard;
